@@ -25,7 +25,7 @@ public class Program
         System.out.print("Telefone: ");
         String phone = scan.nextLine();
         Adress adress = new Adress(email, phone);
-        Department department = new Department(name, payDay, adress);
+        Department dept = new Department(name, payDay, adress);
         System.out.print("Quantos funcionários tem o departamento? ");
         n = scan.nextInt();
         for(i = 0; i < n; i++)
@@ -37,23 +37,27 @@ public class Program
             System.out.print("Salário: ");
             Double salary = scan.nextDouble();
             Employee employee = new Employee(employeeName, salary);
-            department.addEmployee(employee);
+            dept.addEmployee(employee);
         }
         System.out.println();
         System.out.println("FOLHA DE PAGAMENTO:");
-        System.out.println(department);
-
-
-
-
-
-
-
-
-
-
-
+        showReport(dept);
 
         scan.close();
+    }
+    public static void showReport(Department dept)
+    {
+        System.out.println(
+        "Departamento " +
+        dept.getName() +
+        " = R$ " +
+        String.format("%.2f", dept.payroll()) + "\n" +
+        "Pagamento realizado no dia " +
+        dept.getPayDay() + "\n" +
+        "Funcionários: ");
+        for(Employee emp: dept.getEmployee())
+            System.out.println(emp.getName());
+        System.out.println("Para dúvidas favor entrar em contato: " +
+        dept.getAdress().getEmail());
     }
 }

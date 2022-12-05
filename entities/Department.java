@@ -40,21 +40,4 @@ public class Department
             res += emp.getSalary();
         return res;
     }
-
-    public String toString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Departamento ");
-        sb.append(name);
-        sb.append(" = R$ ");
-        sb.append(String.format("%.2f", payroll()) + "\n");
-        sb.append("Pagamento realizado no dia ");
-        sb.append(payDay + "\n");
-        sb.append("Funcionários: \n");
-        for(Employee emp: employee)
-            sb.append(emp.getName() + "\n");
-        sb.append("Para dúvidas favor entrar em contato: ");
-        sb.append(adress.getEmail());
-        return sb.toString();
-    }
 }
